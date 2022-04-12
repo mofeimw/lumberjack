@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Google Drive Log Parser</title>
+        <link rel="stylesheet" href="css/normalize.css">
+        <link rel="stylesheet" href="css/skeleton.css">
+        <link rel="stylesheet" href="css/main.css">
+    </head>
+    <body>
+        <input label="filter" id="filter" placeholder="Filter">
+
+        <table>
+            <caption>Google Drive Log</caption>
+            <thead>
+                <tr>
+                    <th>Action</th>
+                    <th>Date</th>
+                    <th>Time</th>
+                    <th>File</th>
+                </tr>
+            </thead>
+            <tbody id="table">
+            </tbody>
+        </table>
+
+        <script src="js/log.js"></script>
+        <script src="js/main.js"></script>
+    </body>
+</html>
