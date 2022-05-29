@@ -16,14 +16,12 @@ body::-webkit-scrollbar {
 table {
     border-collapse: collapse;
     min-width: 800px;
-    margin-top: 40px;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 40px auto 80px auto;
 }
 
 caption {
     color: #D4516f;
-    font-size: 1.8em;
+    font-size: 2em;
     font-weight: 900;
     margin-bottom: 20px;
 }
