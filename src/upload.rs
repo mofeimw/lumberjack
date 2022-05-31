@@ -1,4 +1,5 @@
-use super::parse;
+use super::db;
+use super::text;
 
 use axum::{
     response::Html,
@@ -14,10 +15,10 @@ pub async fn upload(mut multipart: Multipart) -> Html<&'static str> {
 
         if content_type == "text/plain" {
             let text = file.text().await.unwrap();
-            parse::plain(text);
+            text::parse(text);
         } else {
             let data = file.bytes().await.unwrap();
-            parse::db(data);
+            db::parse(data);
         }
     }
 

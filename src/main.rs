@@ -1,6 +1,7 @@
 mod upload;
 mod index;
-mod parse;
+mod db;
+mod text;
 
 use self::upload::upload;
 use self::index::index;
