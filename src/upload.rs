@@ -17,6 +17,7 @@ pub async fn upload(mut multipart: Multipart) -> Html<&'static str> {
             parse::plain(text);
         } else {
             let data = file.bytes().await.unwrap();
+            parse::db(data);
         }
     }
 
