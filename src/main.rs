@@ -1,5 +1,6 @@
 mod upload;
 mod index;
+mod parse;
 
 use self::upload::upload;
 use self::index::index;
@@ -9,9 +10,7 @@ use axum::{
     routing::{get, get_service, post},
     http::StatusCode
 };
-use tower_http::{
-    services::ServeDir
-};
+use tower_http::services::ServeDir;
 use std::io;
 
 #[tokio::main]
