@@ -1,3 +1,3 @@
-pub fn parse(body: String) {
-    println!("{}", body);
+pub fn plain(text: String) {
+    println!("{}", text);
 }
