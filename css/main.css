@@ -4,13 +4,52 @@ body {
     font-family: "Gothic A1", sans-serif;
     font-weight: 500;
     background-color: #232530;
-    color: #e3bac3;
+    color: #F9CEC3;
     scrollbar-width: none;
     overflow-y: scroll;
+    text-align: center;
 }
 
 body::-webkit-scrollbar {
     display: none;
+}
+
+h1 {
+    color: #D4516f;
+    font-size: 5.6em;
+    font-weight: 800;
+    margin-bottom: 20px;
+    margin-top: 27vh;
+    text-align: center;
+}
+
+p {
+    text-align: center;
+    font-size: 1.3em;
+    margin-bottom: 40px;
+}
+
+.file-input {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+
+.file-input + label {
+    font-size: 1.1em;
+    color: #232530;
+    font-weight: 700;
+    background-color: #1d8991;
+    display: inline-block;
+    padding: 10px 15px;
+}
+
+.file-input:focus + label,
+.file-input + label:hover {
+    background-color: #F9CEC3;
 }
 
 table {

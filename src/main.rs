@@ -1,16 +1,24 @@
+mod upload;
+mod index;
+
+use self::upload::upload;
+use self::index::index;
+
 use axum::{
     Router,
-    routing::{get, get_service},
-    response::Html,
+    routing::{get, get_service, post},
     http::StatusCode
 };
-use tower_http::services::ServeDir;
+use tower_http::{
+    services::ServeDir
+};
 use std::io;
 
 #[tokio::main]
 async fn main() {
     let app = Router::new()
         .route("/", get(index))
+        .route("/lumber", post(upload))
         .fallback(get_service(ServeDir::new("."))
             .handle_error(|error: io::Error| async move {
                 (
@@ -20,13 +28,9 @@ async fn main() {
             })
         );
 
-    println!("server running on port 8888");
+    println!("\x1b[35m\x1b[1m[lumberjack]\x1b[m server running on port 8888");
     axum::Server::bind(&"0.0.0.0:8888".parse().unwrap())
         .serve(app.into_make_service())
         .await
         .unwrap();
-}
-
-async fn index() -> Html<&'static str> {
-    Html(include_str!("../index.html"))
 }

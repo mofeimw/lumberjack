@@ -7,23 +7,17 @@
         <link rel="stylesheet" href="css/main.css">
     </head>
     <body>
-        <input label="filter" id="filter" placeholder="Filter">
+        <h1>lumberjack</h1>
+        <p>a simple utility to view google drive log files.</p>
+        <form action="/lumber" method="post" enctype="multipart/form-data" id="form">
+            <input type="file" name="file" id="file" class="file-input">
+            <label for="file">file upload</label>
+        </form>
 
-        <table>
-            <caption>Google Drive Log</caption>
-            <thead>
-                <tr>
-                    <th>Action</th>
-                    <th>Date</th>
-                    <th>Time</th>
-                    <th>File</th>
-                </tr>
-            </thead>
-            <tbody id="table">
-            </tbody>
-        </table>
-
-        <script src="js/log.js"></script>
-        <script src="js/main.js"></script>
+        <script>
+            document.getElementById("file").onchange = function() {
+                document.getElementById("form").submit();
+            }
+        </script>
     </body>
 </html>
