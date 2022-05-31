@@ -1,10 +1,12 @@
-mod upload;
+mod log;
 mod index;
 mod db;
 mod text;
 
-use self::upload::upload;
-use self::index::index;
+use self::{
+    log::upload,
+    index::index
+};
 
 use axum::{
     Router,
@@ -18,7 +20,7 @@ use std::io;
 async fn main() {
     let app = Router::new()
         .route("/", get(index))
-        .route("/lumber", post(upload))
+        .route("/", post(upload))
         .fallback(get_service(ServeDir::new("."))
             .handle_error(|error: io::Error| async move {
                 (
@@ -28,7 +30,8 @@ async fn main() {
             })
         );
 
-    println!("\x1b[35m\x1b[1m[lumberjack]\x1b[m server running on port 8888");
+    println!("\x1b[1m\x1b[35m[lumberjack] \x1b[32mserver running on port 8888\x1b[m");
+
     axum::Server::bind(&"0.0.0.0:8888".parse().unwrap())
         .serve(app.into_make_service())
         .await
