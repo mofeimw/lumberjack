@@ -27,22 +27,16 @@ pub async fn table(mut multipart: Multipart) -> Html<&'static str> {
         // saving private ryan
         name = file.file_name().unwrap().to_string();
 
-        // send back file upload page if not a plaintext or binary file
-        if (content_type != "text/plain") && (content_type != "application/octet-stream") {
-            println!("\x1b[1m\x1b[35m[lumberjack] \x1b[33m\x1b[1m{} \x1b[34m\x1b[1m({}) \x1b[31mis an invalid log file\x1b[m", file_name, content_type);
-            return Html(include_str!("../templates/index.html"));
-        }
-
         println!("\x1b[1m\x1b[35m[lumberjack] \x1b[33m\x1b[1m{} \x1b[34m\x1b[1m({}) \x1b[32muploaded successfully\x1b[m", file_name, content_type);
 
         if content_type == "text/plain" {
             let text = file.text().await.unwrap();
             text::parse(text);
-        } else if content_type == "application/octet-stream" {
+        } else {
             let data = file.bytes().await.unwrap();
             let rows = db::parse(data);
 
-            // send back file upload page if blank
+            // send back file upload page if file is an invalid format
             if rows == Vec::new() {
                 return Html(include_str!("../templates/index.html"));
             }
