@@ -10,20 +10,15 @@
         <input label="filter" id="filter" placeholder="filter">
 
         <table>
-            <caption>google drive log</caption>
+            <caption>{{ file }}</caption>
             <thead>
-                <tr>
-                    <th>action</th>
-                    <th>date</th>
-                    <th>time</th>
-                    <th>file</th>
+                <tr id="tableHeader">
                 </tr>
             </thead>
-            <tbody id="table">
+            <tbody id="tableBody">
             </tbody>
         </table>
 
-        <script src="js/log.js"></script>
-        <script src="js/main.js"></script>
+        <script src="js/table.js"></script>
     </body>
 </html>

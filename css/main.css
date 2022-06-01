@@ -16,7 +16,7 @@ body::-webkit-scrollbar {
 
 h1 {
     color: #D4516f;
-    font-size: 5.6em;
+    font-size: 6.6em;
     font-weight: 800;
     margin-bottom: 20px;
     margin-top: 27vh;
@@ -60,8 +60,8 @@ table {
 
 caption {
     color: #D4516f;
-    font-size: 2em;
-    font-weight: 900;
+    font-size: 1.9em;
+    font-weight: 700;
     margin-bottom: 20px;
 }
 
@@ -79,10 +79,15 @@ th {
 }
 
 th:first-child, td:first-child {
-    padding-left: 35px;
+    padding-left: 20px;
+}
+
+th:last-child, td:last-child {
+    padding-right: 15px;
 }
 
 th, td {
+    text-align: center;
     padding: 10px 20px;
     border: none;
 }
@@ -100,10 +105,9 @@ th, td {
 #filter:focus {
     box-shadow: none;
     outline: none;
-    border: 2px solid #1d8991;
 }
 
 ::placeholder {
-    color: #3c797d;
-    font-weight: 700;
+    color: #1d8991;
+    font-weight: 600;
 }

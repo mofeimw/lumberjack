@@ -21,9 +21,11 @@ pub fn parse(data: Bytes) -> Vec<Row> {
 
     let state = db.prepare("SELECT local_title, mime_type, viewed_by_me_date, modified_date FROM items;");
 
+    // query the database
     match state {
         Ok(mut state) => {
             let query = state.query_map([], |row| {
+                // fill our Row struct with the data
                 Ok(Row {
                     title: row.get(0).unwrap(),
                     mime: row.get(1).unwrap(),
@@ -32,6 +34,7 @@ pub fn parse(data: Bytes) -> Vec<Row> {
                 })
             }).unwrap();
 
+            // fill up a Vector and return it
             let mut rows: Vec<Row> = Vec::new();
             for row in query {
                 rows.push(row.unwrap());
@@ -40,6 +43,7 @@ pub fn parse(data: Bytes) -> Vec<Row> {
             return rows;
         },
         Err(_) => {
+            // invalid database file - return empty Vector
             println!("\x1b[1m\x1b[35m[lumberjack] \x1b[31minvalid database file\x1b[m");
             return Vec::new();
         }

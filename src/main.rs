@@ -1,10 +1,10 @@
-mod log;
+mod table;
 mod index;
 mod db;
 mod text;
 
 use self::{
-    log::upload,
+    table::table,
     index::index
 };
 
@@ -20,7 +20,7 @@ use std::io;
 async fn main() {
     let app = Router::new()
         .route("/", get(index))
-        .route("/", post(upload))
+        .route("/", post(table))
         .fallback(get_service(ServeDir::new("."))
             .handle_error(|error: io::Error| async move {
                 (
