@@ -1,5 +1,5 @@
 async function getJSON() {
-    const response = await fetch('file.json');
+    const response = await fetch('/lumber/data.json');
     JSON = await response.json();
 
     parse();

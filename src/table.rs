@@ -40,12 +40,6 @@ pub async fn table(mut multipart: Multipart) -> Html<&'static str> {
             if rows == Vec::new() {
                 return Html(include_str!("../templates/index.html"));
             }
-
-            //////////////////////////
-            for row in rows {
-                println!("{:?}", row);
-            }
-            //////////////////////////
         }
     }
 

@@ -1,11 +1,9 @@
 use bytes::Bytes;
 use rusqlite::Connection;
-use std::{
-    fs::File,
-    io::Write
-};
+use std::fs::{create_dir_all, write};
+use serde::{Serialize, Deserialize};
 
-#[derive(Debug, PartialEq)]
+#[derive(Debug, PartialEq, Serialize, Deserialize)]
 pub struct Row {
     pub title: String,
     pub mime: String,
@@ -14,11 +12,10 @@ pub struct Row {
 }
 
 pub fn parse(data: Bytes) -> Vec<Row> {
-    let mut file = File::create("file").unwrap();
-    file.write_all(&data).unwrap();
+    create_dir_all("./lumber").unwrap();
+    write("./lumber/data", data).unwrap();
 
-    let db = Connection::open("file").unwrap();
-
+    let db = Connection::open("./lumber/data").unwrap();
     let state = db.prepare("SELECT local_title, mime_type, viewed_by_me_date, modified_date FROM items;");
 
     // query the database
@@ -36,10 +33,12 @@ pub fn parse(data: Bytes) -> Vec<Row> {
 
             // fill up a Vector and return it
             let mut rows: Vec<Row> = Vec::new();
-            for row in query {
-                rows.push(row.unwrap());
+            for result in query {
+                let row = result.unwrap();
+                rows.push(row);
             }
 
+            to_json(&rows);
             return rows;
         },
         Err(_) => {
@@ -48,4 +47,9 @@ pub fn parse(data: Bytes) -> Vec<Row> {
             return Vec::new();
         }
     }
+}
+
+pub fn to_json(rows: &Vec<Row>) {
+    let json = serde_json::to_string(rows).unwrap();
+    write("./lumber/data.json", json).unwrap();
 }

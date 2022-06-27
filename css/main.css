@@ -54,7 +54,8 @@ p {
 
 table {
     border-collapse: collapse;
-    min-width: 800px;
+    min-width: 70vw;
+    max-width: 70vw;
     margin: 40px auto 80px auto;
 }
 
@@ -97,7 +98,7 @@ th, td {
     border: 2px solid #1c1a21;
     border-radius: 5px;
     padding: 5px 10px;
-    position: fixed;
+    position: absolute;
     top: 47px;
     right: 50px;
 }
