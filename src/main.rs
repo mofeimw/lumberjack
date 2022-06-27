@@ -14,10 +14,15 @@ use axum::{
     http::StatusCode
 };
 use tower_http::services::ServeDir;
-use std::io;
+use std::{io, env::var};
 
 #[tokio::main]
 async fn main() {
+    let port = match var("PORT") {
+        Ok(n) => n,
+        Err(_e) => 8888.to_string()
+    };
+
     let app = Router::new()
         .route("/", get(index))
         .route("/", post(table))
@@ -30,9 +35,9 @@ async fn main() {
             })
         );
 
-    println!("\x1b[1m\x1b[35m[lumberjack] \x1b[32mserver running on port 8888\x1b[m");
+    println!("\x1b[1m\x1b[35m[lumberjack] \x1b[32mserver running on port {}\x1b[m", port);
 
-    axum::Server::bind(&"0.0.0.0:8888".parse().unwrap())
+    axum::Server::bind(&format!("0.0.0.0:{}", port).parse().unwrap())
         .serve(app.into_make_service())
         .await
         .unwrap();
