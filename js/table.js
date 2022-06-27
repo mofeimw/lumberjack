@@ -1,56 +1,4 @@
-async function getJSON() {
-    const response = await fetch('/lumber/data.json');
-    JSON = await response.json();
-
-    parse();
-}
-
-function parse() {
-    // the table headers at the top
-    let headers = [];
-
-    // data in OBJECT form
-    DATA = {};
-
-    // get all of the main table headers
-    JSON.forEach(function (obj, z) {
-        for (let key in obj) {
-            if (!headers.includes(key)) {
-                headers.push(key);
-            }
-        }
-    });
-
-    // create an array inside object for each header
-    headers.forEach(function (header, i) {
-        DATA[header] = [];
-        let h = document.createElement("th");
-        h.innerHTML = header;
-        tableHeader.appendChild(h);
-    });
-
-    // loop back through and add all the data
-    JSON.forEach(function (obj, z) {
-        for (let key in obj) {
-            // check if the data is a number
-            if (!isNaN(obj[key])) {
-                // check if it is an epoch (?) timestamp
-                // 13 digits = milliseconds
-                // 10 digits = seconds
-                if (obj[key].toString().length == 13 || obj[key].toString().length == 10) {
-                    // make a new JavaScript Date
-                    // and convert to the local timezone date
-                    obj[key] = new Date(obj[key]).toLocaleDateString();
-                // never
-                } else if (obj[key] == 0) {
-                    obj[key] = "never"
-                }
-            }
-
-            DATA[key].push(obj[key]);
-        }
-    });
-
+function createTable() {
     // total number of rows
     // should remain constant for everyone
     R = Object.values(DATA)[0].length;
@@ -72,7 +20,6 @@ function parse() {
         TABLE.push(tableRow);
     }
 
-    // fill the table up
     populateTable();
 }
 
@@ -115,10 +62,12 @@ function filterTable() {
     });
 }
 
+// get the JSON data
+// then dynamically create the table
+getData().then(createTable);
+
 const tableHeader = document.getElementById("tableHeader");
 const tableBody = document.getElementById("tableBody");
 const filter = document.getElementById("filter");
 
 filter.oninput = filterTable;
-
-getJSON();

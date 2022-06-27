@@ -22,7 +22,7 @@ pub fn parse(data: Bytes) -> Vec<Row> {
     match state {
         Ok(mut state) => {
             let query = state.query_map([], |row| {
-                // fill our Row struct with the data
+                // fill a Row struct with the data
                 Ok(Row {
                     title: row.get(0).unwrap(),
                     mime: row.get(1).unwrap(),
@@ -31,14 +31,18 @@ pub fn parse(data: Bytes) -> Vec<Row> {
                 })
             }).unwrap();
 
-            // fill up a Vector and return it
+            // organize the data into a Vector
             let mut rows: Vec<Row> = Vec::new();
             for result in query {
                 let row = result.unwrap();
                 rows.push(row);
             }
 
-            to_json(&rows);
+            // serialize Vector into JSON
+            // wrapped in a top level array
+            let json = serde_json::to_string(&rows).unwrap();
+            write("./lumber/data.json", json).unwrap();
+
             return rows;
         },
         Err(_) => {
@@ -47,9 +51,4 @@ pub fn parse(data: Bytes) -> Vec<Row> {
             return Vec::new();
         }
     }
-}
-
-pub fn to_json(rows: &Vec<Row>) {
-    let json = serde_json::to_string(rows).unwrap();
-    write("./lumber/data.json", json).unwrap();
 }
