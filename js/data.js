@@ -20,7 +20,7 @@ async function getData() {
         DATA[section] = [];
 
         // only for tables
-        if (typeof tableHeader !== "undefined") {
+        if (typeof tableHeader === "function") {
             let h = document.createElement("th");
             h.innerHTML = section;
             tableHeader.appendChild(h);

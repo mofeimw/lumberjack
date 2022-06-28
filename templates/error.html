@@ -6,12 +6,29 @@
         <link rel="stylesheet" href="css/main.css">
     </head>
     <body>
-        <h1>error</h1>
-        <p>please upload a valid Google Drive log file.</p>
-        <form action="/table" method="post" enctype="multipart/form-data" id="form">
-            <input type="file" name="file" id="file" class="file-input">
-            <label for="file">file upload</label>
-        </form>
+        <div id="error">
+            <h2>error</h2>
+            <p>please upload a valid Google Drive log file.</p>
+            <form action="/table" method="post" enctype="multipart/form-data" id="form">
+                <input type="file" name="file" id="file" class="file-input">
+                <label for="file">file upload</label>
+            </form>
+        </div>
+
+        <div id="guide">
+            <div id="mac">
+                <h2>macOS</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Laoreet sit amet cursus sit amet dictum. Tincidunt praesent semper feugiat nibh sed pulvinar proin. Congue quisque egestas diam in arcu. Commodo viverra maecenas accumsan lacus vel. Maecenas accumsan lacus vel facilisis volutpat. Quisque id diam vel quam elementum pulvinar etiam non quam. Lorem ipsum dolor sit amet. Viverra maecenas accumsan lacus vel. Iaculis at erat pellentesque adipiscing commodo elit. Integer malesuada nunc vel risus commodo viverra maecenas accumsan. Nunc consequat interdum varius sit amet mattis vulputate enim nulla. Fermentum et sollicitudin ac orci phasellus.</p>
+            </div>
+            <div id="windows">
+                <h2>windows</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Laoreet sit amet cursus sit amet dictum. Tincidunt praesent semper feugiat nibh sed pulvinar proin. Congue quisque egestas diam in arcu. Commodo viverra maecenas accumsan lacus vel. Maecenas accumsan lacus vel facilisis volutpat. Quisque id diam vel quam elementum pulvinar etiam non quam. Lorem ipsum dolor sit amet. Viverra maecenas accumsan lacus vel. Iaculis at erat pellentesque adipiscing commodo elit. Integer malesuada nunc vel risus commodo viverra maecenas accumsan. Nunc consequat interdum varius sit amet mattis vulputate enim nulla. Fermentum et sollicitudin ac orci phasellus.</p>
+            </div>
+            <div id="linux">
+                <h2>linux</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Laoreet sit amet cursus sit amet dictum. Tincidunt praesent semper feugiat nibh sed pulvinar proin. Congue quisque egestas diam in arcu. Commodo viverra maecenas accumsan lacus vel. Maecenas accumsan lacus vel facilisis volutpat. Quisque id diam vel quam elementum pulvinar etiam non quam. Lorem ipsum dolor sit amet. Viverra maecenas accumsan lacus vel. Iaculis at erat pellentesque adipiscing commodo elit. Integer malesuada nunc vel risus commodo viverra maecenas accumsan. Nunc consequat interdum varius sit amet mattis vulputate enim nulla. Fermentum et sollicitudin ac orci phasellus.</p>
+            </div>
+        </div>
 
         <script>
             document.getElementById("file").onchange = function() {

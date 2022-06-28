@@ -24,7 +24,7 @@ h1 {
 }
 
 h2 {
-    color: #1d8991;
+    color: #D4516f;
     font-size: 2.7em;
     font-weight: 700;
     margin-top: 40px;
@@ -56,6 +56,51 @@ p {
 
 .file-input + label:hover {
     background-color: #F9CEC3;
+}
+
+#error {
+    width: 40vw;
+    position: fixed;
+    text-align: left;
+    padding: 60px;
+}
+
+#error h2 {
+    margin: 0;
+}
+
+#error p {
+    margin-bottom: 30px;
+    text-align: left;
+}
+
+#guide {
+    background-color: #6c6f93;
+    margin-left: 40vw;
+    height: 140vh;
+    padding: 60px;
+    text-align: left;
+}
+
+#guide div {
+    margin-bottom: 40px;
+}
+
+#guide h2 {
+    color: #232530;
+    font-size: 32px;
+    font-weight: 700;
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+#guide p {
+    color: #232530;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.3em;
+    text-align: justify;
+    margin: 0;
 }
 
 table {
@@ -96,7 +141,7 @@ th:last-child, td:last-child {
 
 th, td {
     text-align: center;
-    padding: 10px 20px;
+    padding: 15px 20px;
     border: none;
 }
 
