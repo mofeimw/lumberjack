@@ -3,11 +3,14 @@
     <head>
         <title>lumberjack</title>
         <link rel="stylesheet" href="css/normalize.css">
-        <link rel="stylesheet" href="css/skeleton.css">
         <link rel="stylesheet" href="css/main.css">
     </head>
     <body>
         <input label="filter" id="filter" placeholder="filter">
+
+        <form action="/charts" method="post" id="charts-form">
+            <button name="charts" type="submit" value="{{ file }}" id="charts-button">charts</button>
+        </form>
 
         <table>
             <caption>{{ file }}</caption>

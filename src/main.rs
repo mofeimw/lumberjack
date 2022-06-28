@@ -1,13 +1,15 @@
 mod index;
 mod error;
 mod table;
+mod charts;
 mod db;
 mod text;
 
 use self::{
     index::index,
     error::error,
-    table::table
+    table::table,
+    charts::charts
 };
 
 use axum::{
@@ -29,8 +31,8 @@ async fn main() {
     let app = Router::new()
         .route("/", get(index))
         .route("/error", get(error))
-        .route("/table", post(table)) // form POSTS on submit
-        .route("/table", get(error)) // display error page if GET
+        .route("/table", post(table))
+        .route("/charts", post(charts))
         .fallback(get_service(ServeDir::new("."))
             .handle_error(|error: io::Error| async move {
                 (

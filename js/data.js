@@ -1,14 +1,14 @@
 async function getData() {
     // get the JSON data
     const response = await fetch('/lumber/data.json');
-    JSON = await response.json();
+    JSON_DATA = await response.json();
 
     // get all of the SQLite columns/sections
-    let sections = [];
-    JSON.forEach(function (obj, z) {
+    SECTIONS = [];
+    JSON_DATA.forEach(function (obj, z) {
         for (let key in obj) {
-            if (!sections.includes(key)) {
-                sections.push(key);
+            if (!SECTIONS.includes(key)) {
+                SECTIONS.push(key);
             }
         }
     });
@@ -16,15 +16,19 @@ async function getData() {
     // data in OBJECT form
     DATA = {};
     // create an array inside DATA object for each section
-    sections.forEach(function (section, i) {
+    SECTIONS.forEach(function (section, i) {
         DATA[section] = [];
-        let h = document.createElement("th");
-        h.innerHTML = section;
-        tableHeader.appendChild(h);
+
+        // only for tables
+        if (typeof tableHeader !== "undefined") {
+            let h = document.createElement("th");
+            h.innerHTML = section;
+            tableHeader.appendChild(h);
+        }
     });
 
     // loop back through and add all the data
-    JSON.forEach(function (obj, z) {
+    JSON_DATA.forEach(function (obj, z) {
         for (let key in obj) {
             // check if the data is a number
             if (!isNaN(obj[key])) {

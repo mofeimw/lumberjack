@@ -23,6 +23,13 @@ h1 {
     text-align: center;
 }
 
+h2 {
+    color: #1d8991;
+    font-size: 2.7em;
+    font-weight: 700;
+    margin-top: 40px;
+}
+
 p {
     text-align: center;
     font-size: 1.3em;
@@ -40,8 +47,8 @@ p {
 
 .file-input + label {
     font-size: 1.1em;
-    color: #232530;
     font-weight: 700;
+    color: #232530;
     background-color: #1d8991;
     display: inline-block;
     padding: 10px 23px;
@@ -56,11 +63,12 @@ table {
     min-width: 70vw;
     max-width: 70vw;
     margin: 40px auto 80px auto;
+    font-size: 16px;
 }
 
 caption {
     color: #D4516f;
-    font-size: 1.9em;
+    font-size: 2.3em;
     font-weight: 700;
     margin-bottom: 20px;
 }
@@ -94,20 +102,53 @@ th, td {
 
 #filter {
     background-color: #2f3140;
-    border: 2px solid #1c1a21;
-    border-radius: 5px;
-    padding: 5px 10px;
+    border: 0;
+    padding: 10px 10px;
+    border-bottom: 3px solid #1d8991;
     position: absolute;
-    top: 47px;
+    top: 35px;
     right: 50px;
 }
 
 #filter:focus {
     box-shadow: none;
     outline: none;
+    border-bottom: 3px solid #50C08E;
+}
+
+#filter:focus::placeholder {
+    color: #50C08E;
 }
 
 ::placeholder {
     color: #1d8991;
     font-weight: 600;
+}
+
+.chart {
+    width: 400px; !important
+    height: 400px; !important
+}
+
+.chart-container {
+    width: 70vw;
+    margin: 0 auto;
+    margin-top: 60px;
+}
+
+#charts-button {
+    font-size: 1.1em;
+    font-weight: 700;
+    color: #232530;
+    background-color: #50C08E;
+    display: inline-block;
+    padding: 10px 23px;
+    border: 0;
+    position: absolute;
+    top: 35px;
+    left: 50px;
+}
+
+#charts-button:hover {
+    background-color: #F9CEC3;
 }

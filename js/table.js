@@ -1,4 +1,12 @@
 function createTable() {
+    // grab DOM elements
+    const tableHeader = document.getElementById("tableHeader");
+    const tableBody = document.getElementById("tableBody");
+    const filter = document.getElementById("filter");
+
+    // set up event listener for the filter box
+    filter.oninput = filterTable;
+
     // total number of rows
     // should remain constant for everyone
     R = Object.values(DATA)[0].length;
@@ -65,9 +73,3 @@ function filterTable() {
 // get the JSON data
 // then dynamically create the table
 getData().then(createTable);
-
-const tableHeader = document.getElementById("tableHeader");
-const tableBody = document.getElementById("tableBody");
-const filter = document.getElementById("filter");
-
-filter.oninput = filterTable;
