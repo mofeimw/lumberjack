@@ -32,13 +32,19 @@ pub async fn table(mut multipart: Multipart) -> Html<&'static str> {
         if content_type == "text/plain" {
             let text = file.text().await.unwrap();
             text::parse(text);
+
+            //////////////////////////////////////////
+            // TEMPORARY UNTIL DRIVE_FS.TXT PARSING //
+            //////////////////////////////////////////
+            return Html("<script>window.location.replace('/error');</script>");
+        // assume to be an SQLite DB file
         } else {
             let data = file.bytes().await.unwrap();
             let rows = db::parse(data);
 
-            // send back file upload page if file is an invalid format
+            // redirect to /error if the file is invalid
             if rows == Vec::new() {
-                return Html(include_str!("../templates/index.html"));
+                return Html("<script>window.location.replace('/error');</script>");
             }
         }
     }

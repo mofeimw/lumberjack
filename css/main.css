@@ -44,10 +44,9 @@ p {
     font-weight: 700;
     background-color: #1d8991;
     display: inline-block;
-    padding: 10px 15px;
+    padding: 10px 23px;
 }
 
-.file-input:focus + label,
 .file-input + label:hover {
     background-color: #F9CEC3;
 }

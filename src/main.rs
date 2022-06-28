@@ -1,11 +1,13 @@
-mod table;
 mod index;
+mod error;
+mod table;
 mod db;
 mod text;
 
 use self::{
-    table::table,
-    index::index
+    index::index,
+    error::error,
+    table::table
 };
 
 use axum::{
@@ -18,6 +20,7 @@ use std::{io, env::var};
 
 #[tokio::main]
 async fn main() {
+    // grab $PORT environment variable
     let port = match var("PORT") {
         Ok(n) => n,
         Err(_e) => 8888.to_string()
@@ -25,7 +28,9 @@ async fn main() {
 
     let app = Router::new()
         .route("/", get(index))
-        .route("/", post(table))
+        .route("/error", get(error))
+        .route("/table", post(table)) // form POSTS on submit
+        .route("/table", get(error)) // display error page if GET
         .fallback(get_service(ServeDir::new("."))
             .handle_error(|error: io::Error| async move {
                 (
