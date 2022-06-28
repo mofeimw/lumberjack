@@ -170,6 +170,11 @@ th, td {
     font-weight: 600;
 }
 
+.padding {
+    display: block;
+    height: 20vh;
+}
+
 .chart {
     width: 400px; !important
     height: 400px; !important
@@ -178,7 +183,6 @@ th, td {
 .chart-container {
     width: 70vw;
     margin: 0 auto;
-    margin-top: 60px;
 }
 
 #charts-button {
