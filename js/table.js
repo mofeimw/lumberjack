@@ -1,4 +1,4 @@
-function createTable() {
+function main() {
     // grab DOM elements
     const tableHeader = document.getElementById("tableHeader");
     const tableBody = document.getElementById("tableBody");
@@ -39,6 +39,7 @@ function populateRow(row) {
     }
 }
 
+// call populateRow() for each row of the table
 function populateTable() {
     TABLE.forEach(function (row, l) {
         populateRow(row);
@@ -72,4 +73,4 @@ function filterTable() {
 
 // get the JSON data
 // then dynamically create the table
-getData().then(createTable);
+getData().then(main);

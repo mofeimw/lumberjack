@@ -67,10 +67,13 @@ p {
 
 #error h2 {
     margin: 0;
+    font-size: 3em;
 }
 
 #error p {
     margin-bottom: 30px;
+    margin-top: 10px;
+    font-size: 1.2em;
     text-align: left;
 }
 
@@ -88,7 +91,7 @@ p {
 
 #guide h2 {
     color: #232530;
-    font-size: 32px;
+    font-size: 2em;
     font-weight: 700;
     margin-top: 0;
     margin-bottom: 10px;
@@ -96,7 +99,7 @@ p {
 
 #guide p {
     color: #232530;
-    font-size: 18px;
+    font-size: 1.05em;
     font-weight: 500;
     line-height: 1.3em;
     text-align: justify;
@@ -108,14 +111,14 @@ table {
     min-width: 70vw;
     max-width: 70vw;
     margin: 40px auto 80px auto;
-    font-size: 16px;
+    font-size: 1em;
 }
 
 caption {
     color: #D4516f;
     font-size: 2.3em;
     font-weight: 700;
-    margin-bottom: 20px;
+    margin-bottom: 40px;
 }
 
 thead {

@@ -1,4 +1,4 @@
-function createCharts() {
+function main() {
     const COLORS = [
         "#D4516f", // red
         "#1d8991", // blue
@@ -15,22 +15,43 @@ function createCharts() {
 
     Chart.defaults.responsive = true;
     Chart.defaults.maintainAspectRatio = false;
+
     Chart.defaults.backgroundColor = COLORS;
+    Chart.defaults.color = "#F9CEC3";
+
     Chart.defaults.font.family = "Gothic A1";
-    Chart.defaults.font.weight = "bold";
-    Chart.defaults.font.size = 13;
+    Chart.defaults.font.size = 14;
+    Chart.defaults.font.weight = 500;
+
     Chart.defaults.plugins.legend.position = "left";
 
+    // grab the canvas
+    CANVAS = document.getElementById("chart").getContext('2d');
+
+    // decide on a type of chart depending on the form of data
+    // (column of SQLite table)
     SECTIONS.forEach((section, i) => {
         switch (section) {
+            // MIME
             case "mime":
-                fileTypes();
+                CHART = new Chart(CANVAS, mimes());
+                break;
+
+            // date last modified
+            case "modified":
+                // create a timeline!!!
+                break;
+
+            // date last viewed
+            case "viewed":
+                // create a timeline!!!
                 break;
         }
     });
 }
 
-function fileTypes() {
+// count the amount of each MIME type
+function mimes() {
     let mimes = {};
 
     for (var i = 0; i < DATA["mime"].length; i++) {
@@ -41,12 +62,11 @@ function fileTypes() {
         }
     }
 
-    pieChart(mimes);
+    return pieChart(mimes);
 }
 
+// make a pie/donut chart
 function pieChart(data) {
-    const pieCanvas = document.getElementById("pieChart").getContext('2d');
-
     let args = {
         type: 'doughnut',
         data: {
@@ -62,9 +82,8 @@ function pieChart(data) {
         }
     };
 
-    const pieChart = new Chart(pieCanvas, args);
+    return args;
 }
 
-getData().then(createCharts);
-
-
+// get the JSON data
+getData().then(main);
