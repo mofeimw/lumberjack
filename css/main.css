@@ -5,13 +5,7 @@ body {
     font-weight: 500;
     background-color: #232530;
     color: #F9CEC3;
-    scrollbar-width: none;
-    overflow-y: scroll;
     text-align: center;
-}
-
-body::-webkit-scrollbar {
-    display: none;
 }
 
 h1 {

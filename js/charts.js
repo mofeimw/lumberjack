@@ -1,16 +1,20 @@
 function main() {
     const COLORS = [
-        "#D4516f", // red
         "#1d8991", // blue
+        "#D4516f", // red
         "#D78374", // orange
         "#50C08E", // green
         "#B08CCC", // purple
-        "#F3DE8A", // yellow
-        "#83a598", // light blue
-        "#d3869b", // light pink
-        "#0f403e", // dark green
-        "#2B4162", // dark blue
-        "#442f54", // dark purple
+        "#9ED9E0", // light blue
+        "#E49EA6", // light red
+        "#F8C19C", // light orange
+        "#F5EA99", // yellow
+        "#B0E5AF", // light green
+        "#DDBAF7", // light purple
+        "#2A586C", // dark blue
+        "#72314B", // dark red
+        "#36685E", // dark green
+        "#59477B", // dark purple
     ];
 
     Chart.defaults.responsive = true;
@@ -26,28 +30,18 @@ function main() {
     Chart.defaults.plugins.legend.position = "left";
 
     // grab the canvas
-    CANVAS = document.getElementById("chart").getContext('2d');
+    CANVAS = document.getElementById("chart").getContext("2d");
 
-    // decide on a type of chart depending on the form of data
-    // (column of SQLite table)
-    SECTIONS.forEach((section, i) => {
-        switch (section) {
-            // MIME
-            case "mime":
-                CHART = new Chart(CANVAS, mimes());
-                break;
-
-            // date last modified
-            case "modified":
-                // create a timeline!!!
-                break;
-
-            // date last viewed
-            case "viewed":
-                // create a timeline!!!
-                break;
-        }
-    });
+    // decide on the type of chart to display
+    if (SECTIONS.includes("mime")) {
+        CHART = new Chart(CANVAS, mimes());
+    } else if (SECTIONS.includes("modified")) {
+        // do something
+        null;
+    } else if (SECTIONS.includes("viewed")) {
+        // do something
+        null;
+    }
 }
 
 // count the amount of each MIME type
@@ -68,7 +62,7 @@ function mimes() {
 // make a pie/donut chart
 function pieChart(data) {
     let args = {
-        type: 'doughnut',
+        type: "doughnut",
         data: {
             labels: Object.keys(data),
             datasets: [
