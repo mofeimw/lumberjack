@@ -116,16 +116,20 @@ caption {
 }
 
 thead {
-    background: #1d8991;
+    background-color: #1d8991;
     color: #232530;
 }
 
 tbody tr:nth-child(even) {
-    background: #2f3140;
+    background-color: #2f3140;
 }
 
 th {
     font-weight: 800;
+}
+
+th:hover {
+    background-color: #50C08E;
 }
 
 th:first-child, td:first-child {
@@ -146,7 +150,7 @@ th, td {
     background-color: #2f3140;
     border: 0;
     padding: 10px 10px;
-    border-bottom: 3px solid #1d8991;
+    border-bottom: 4px solid #1d8991;
     position: absolute;
     top: 35px;
     right: 50px;
@@ -155,7 +159,7 @@ th, td {
 #filter:focus {
     box-shadow: none;
     outline: none;
-    border-bottom: 3px solid #50C08E;
+    border-bottom: 4px solid #50C08E;
 }
 
 #filter:focus::placeholder {
