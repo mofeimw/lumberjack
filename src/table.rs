@@ -9,9 +9,8 @@ use askama::Template;
 // HTML template
 #[derive(Template)]
 #[template(path = "table.html")]
-
-struct LogTemplate<'a> {
-    file: &'a str
+struct TableTemplate<'a> {
+    file_name: &'a str
 }
 
 pub async fn table(mut multipart: Multipart) -> Html<&'static str> {
@@ -49,7 +48,7 @@ pub async fn table(mut multipart: Multipart) -> Html<&'static str> {
         }
     }
 
-    let html = LogTemplate { file: &name };
+    let html = TableTemplate { file_name: &name };
     // converts String to &'static str
     ////// - converts the String instance into a boxed str and immediately leaks it
     ////// - frees all excess capacity the string may currently occupy

@@ -8,12 +8,12 @@
     <body>
         <input label="filter" id="filter" placeholder="filter">
 
-        <form action="/charts" method="post" id="charts-form">
-            <button name="charts" type="submit" value="{{ file }}" id="charts-button">charts</button>
+        <form action="/charts" method="post" id="charts_form">
+            <button name="file_name" type="submit" value="{{ file_name }}" id="charts-button">charts</button>
         </form>
 
         <table>
-            <caption>{{ file }}</caption>
+            <caption id="file">{{ file_name }}</caption>
             <thead>
                 <tr id="tableHeader">
                 </tr>

@@ -132,8 +132,6 @@ function sortOnClick(tableBody) {
                     a = +(a[2] + a[0] + a[1]);
                     b = +(b[2] + b[0] + b[1]);
 
-                    console.log(a + "::" + b);
-
                     // if direction is ascending: return a - b
                     // else: return b - a
                     return direction === "asc" ? a - b : b - a;

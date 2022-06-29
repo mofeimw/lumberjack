@@ -8,14 +8,14 @@
     <body>
         <h1>lumberjack</h1>
         <p>a simple utility to view Google Drive log files.</p>
-        <form action="/table" method="post" enctype="multipart/form-data" id="form">
-            <input type="file" name="file" id="file" class="file-input">
-            <label for="file">file upload</label>
+        <form action="/table" method="post" enctype="multipart/form-data" id="upload_form">
+            <input type="file" name="file" id="file_input" class="file-input">
+            <label for="file_input">file upload</label>
         </form>
 
         <script>
-            document.getElementById("file").onchange = function() {
-                document.getElementById("form").submit();
+            document.getElementById("file_input").onchange = function() {
+                document.getElementById("upload_form").submit();
             }
         </script>
     </body>

@@ -24,6 +24,14 @@ h2 {
     margin-top: 40px;
 }
 
+h3 {
+    color: #1d8991;
+    font-size: 2.3em;
+    font-weight: 700;
+    margin-top: 5vh;
+    margin-bottom: 0;
+}
+
 p {
     text-align: center;
     font-size: 1.3em;
@@ -173,7 +181,7 @@ th, td {
 
 .padding {
     display: block;
-    height: 20vh;
+    height: 10vh;
 }
 
 .chart {
