@@ -35,7 +35,15 @@ function populateRow(row) {
     let tableRow = tableBody.insertRow();
     for (let i = 0; i < row.length; i++) {
         let cell = tableRow.insertCell(i);
-        cell.innerHTML = row[i];
+
+        if (row[i] instanceof Date) {
+            cell.innerHTML = row[i].toLocaleDateString();
+        } else if (row[i] == 0) {
+            cell.innerHTML = "never";
+        // single lives matter
+        } else {
+            cell.innerHTML = row[i];
+        }
     }
 }
 

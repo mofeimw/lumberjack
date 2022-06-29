@@ -38,10 +38,8 @@ async function getData() {
                 if (obj[key].toString().length == 13 || obj[key].toString().length == 10) {
                     // make a new JavaScript Date
                     // and convert to the local timezone date
-                    obj[key] = new Date(obj[key]).toLocaleDateString();
-                // never
-                } else if (obj[key] == 0) {
-                    obj[key] = "never"
+                    let date = new Date(obj[key]);
+                    obj[key] = date;
                 }
             }
 
