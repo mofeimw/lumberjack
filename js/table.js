@@ -115,7 +115,7 @@ function sortOnClick(tableBody) {
 
                 // convert date in the M/D/Y string form into a comparable number
                 // 6/23/2005 => 20050623
-                if (new Date(a) !== "Invalid Date" && !isNaN(new Date(a))) {
+                if (!isNaN(Date.parse(a)) && !/[a-zA-Z]/.test(a)) {
                     // split date into array of month, day, and year
                     a = a.split("/");
                     b = b.split("/");

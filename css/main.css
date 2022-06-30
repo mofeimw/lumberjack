@@ -28,7 +28,7 @@ h3 {
     color: #1d8991;
     font-size: 2.3em;
     font-weight: 700;
-    margin-top: 5vh;
+    margin-top: 40px;
     margin-bottom: 0;
 }
 
@@ -137,7 +137,7 @@ th {
 }
 
 th:hover {
-    background-color: #50C08E;
+    background-color: #F9CEC3;
 }
 
 th:first-child, td:first-child {
@@ -149,9 +149,14 @@ th:last-child, td:last-child {
 }
 
 th, td {
-    text-align: center;
+    text-align: left;
     padding: 15px 20px;
     border: none;
+}
+
+::placeholder {
+    color: #1d8991;
+    font-weight: 600;
 }
 
 #filter {
@@ -167,16 +172,19 @@ th, td {
 #filter:focus {
     box-shadow: none;
     outline: none;
-    border-bottom: 4px solid #50C08E;
+    border-bottom: 4px solid #F9CEC3;
 }
 
 #filter:focus::placeholder {
-    color: #50C08E;
+    color: #F9CEC3;
 }
 
-::placeholder {
-    color: #1d8991;
-    font-weight: 600;
+#filter:hover {
+    border-bottom: 4px solid #50C08E;
+}
+
+#filter:hover::placeholder {
+    color: #50C08E;
 }
 
 .padding {
